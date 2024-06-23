@@ -3,7 +3,7 @@ import User from "../models/user.model.js";
 export const getUsersForSide = async(req,res)=>{
     try {
         const loggedId = req.user._id;
-        const filteredUsers = await User.find({_id:{$ne:loggedId}});
+        const filteredUsers = await User.find({_id:{$ne:loggedId}}).select("-password");
 
         res.status(200).json(filteredUsers);
 

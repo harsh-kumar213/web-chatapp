@@ -52,7 +52,7 @@ export const getMessage =  async (req,res)=>{
             participants:{$all:[senderId,userToChat]}
         }).populate("messages");// not reference but actual messages will be there by using populate method
 
-        if(!conversation) res.status(200).json([]);
+        if(!conversation) return res.status(200).json([]);
 
         const messages = conversation.messages;
 
